@@ -1,25 +1,32 @@
 package com.parallax.effectivemobileproject.main.mainpage.hotsales.viewpager
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.parallax.effectivemobileproject.R
+import com.parallax.effectivemobileproject.main.model.HomeStoreItem
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
+import java.lang.Exception
 import java.lang.ref.WeakReference
 
-class HotSalesAdapter: RecyclerView.Adapter<HotSalesAdapter.HotSalesItemViewHolder>() {
+class HotSalesAdapter(val context: Context, ): RecyclerView.Adapter<HotSalesAdapter.HotSalesItemViewHolder>() {
 
-    private val photos = mutableListOf<Int>()
-    private val brands = mutableListOf<String>()
-    private val descriptions = mutableListOf<String>()
-    private val isNew = mutableListOf<Boolean>()
+    val homeStoreList = mutableListOf<HomeStoreItem>()
 
-    //fun setData()
+    fun setData(hotSales: MutableList<HomeStoreItem>) {
+        homeStoreList.clear()
+        homeStoreList.addAll(hotSales)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HotSalesItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_hot_sales, parent, false)
@@ -27,16 +34,32 @@ class HotSalesAdapter: RecyclerView.Adapter<HotSalesAdapter.HotSalesItemViewHold
     }
 
     override fun onBindViewHolder(holder: HotSalesItemViewHolder, position: Int) {
-        holder.photoLayout.setBackgroundResource(photos[position])
-        if (isNew[position])
+        Picasso.get()
+            .load(homeStoreList[position].picture)
+            .into(object : Target {
+                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+                    holder.photoLayout.background = BitmapDrawable(context.resources, bitmap)
+                }
+
+                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+        //holder.photoLayout.setBackgroundResource(homeStoreList[position].picture)
+        if (homeStoreList[position].is_new)
             holder.novelty.visibility = ConstraintLayout.VISIBLE
         else ConstraintLayout.INVISIBLE
-        holder.brandName.text = brands[position]
-        holder.itemDescription.text = descriptions[position]
+        holder.brandName.text = homeStoreList[position].title
+        holder.itemDescription.text = homeStoreList[position].subtitle
     }
 
     override fun getItemCount(): Int {
-        return photos.size
+        return homeStoreList.size
     }
 
     class HotSalesItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {

@@ -1,5 +1,7 @@
 package com.parallax.effectivemobileproject.main.model
 
+import org.json.JSONObject
+
 class BestSellerItem(
     id: Long,
     title: String,

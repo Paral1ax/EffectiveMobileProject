@@ -1,23 +1,23 @@
 package com.parallax.effectivemobileproject.main.mainpage
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.parallax.effectivemobileproject.main.model.BestSellerItem
 import com.parallax.effectivemobileproject.main.model.HomeStoreItem
-import com.parallax.effectivemobileproject.main.model.MainApiModel
-import com.parallax.effectivemobileproject.main.repository.Repository
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel() : ViewModel() {
 
-    val mainModel = MutableLiveData<Response<MainApiModel>>()
-
-    fun getHotSales() {
+    fun getMainFragmentLiveData(context: Context) {
         viewModelScope.launch {
-            val response = repository.getHotSales()
-            mainModel.value = response
         }
     }
+
+     companion object {
+         val hotSales = MutableLiveData<List<HomeStoreItem>>()
+         val bestSellers = MutableLiveData<List<BestSellerItem>>()
+     }
 
 }
