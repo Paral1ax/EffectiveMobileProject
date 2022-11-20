@@ -1,27 +1,24 @@
 package com.parallax.effectivemobileproject.main.mainpage.hotsales.viewpager
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import coil.ImageLoader
+import coil.request.ImageRequest
 import com.parallax.effectivemobileproject.R
-import com.parallax.effectivemobileproject.main.model.HomeStoreItem
-import com.squareup.picasso.Picasso
-import com.squareup.picasso.Target
-import java.lang.Exception
+import com.parallax.effectivemobileproject.main.model.main.HomeStoreItem
 import java.lang.ref.WeakReference
 
-class HotSalesAdapter(val context: Context, ): RecyclerView.Adapter<HotSalesAdapter.HotSalesItemViewHolder>() {
+class HotSalesAdapter(private val context: Context): RecyclerView.Adapter<HotSalesAdapter.HotSalesItemViewHolder>() {
 
-    val homeStoreList = mutableListOf<HomeStoreItem>()
+    private val imageLoader = ImageLoader(context)
+    private val homeStoreList = mutableListOf<HomeStoreItem>()
 
     fun setData(hotSales: MutableList<HomeStoreItem>) {
         homeStoreList.clear()
@@ -34,23 +31,14 @@ class HotSalesAdapter(val context: Context, ): RecyclerView.Adapter<HotSalesAdap
     }
 
     override fun onBindViewHolder(holder: HotSalesItemViewHolder, position: Int) {
-        Picasso.get()
-            .load(homeStoreList[position].picture)
-            .into(object : Target {
-                override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
-                    holder.photoLayout.background = BitmapDrawable(context.resources, bitmap)
-                }
-
-                override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-        //holder.photoLayout.setBackgroundResource(homeStoreList[position].picture)
+        val request = ImageRequest.Builder(context)
+            .data(homeStoreList[position].picture)
+            .target { drawable ->
+                holder.photoLayout.background = drawable
+                Log.d("API", "Загрузка фото номер $position во вьюпеджер прошла успешно")
+            }
+            .build()
+        val disposable = imageLoader.enqueue(request)
         if (homeStoreList[position].is_new)
             holder.novelty.visibility = ConstraintLayout.VISIBLE
         else ConstraintLayout.INVISIBLE
@@ -78,7 +66,6 @@ class HotSalesAdapter(val context: Context, ): RecyclerView.Adapter<HotSalesAdap
         private fun getViews() {
 
             view.get()?.let {
-
                 photoLayout = it.findViewById(R.id.hot_sales_photo)
                 novelty = it.findViewById(R.id.new_hot_sales_item)
                 brandName = it.findViewById(R.id.item_brand_name)

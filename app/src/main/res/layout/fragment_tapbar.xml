@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".main.mainpage.bottomtapbar.TapbarFragment">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
         android:name="com.parallax.effectivemobileproject.main.mainpage.MainFragment"

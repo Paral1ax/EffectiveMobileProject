@@ -30,15 +30,5 @@ class HotSalesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewPager = view.findViewById(R.id.hotsales_viewpager)
-        viewModel = ViewModelProvider(this)[HotSalesViewModel::class.java]
-        viewModel.getHotSales()
-        viewModel.responseData.observe(viewLifecycleOwner, Observer {
-            val adapter = HotSalesAdapter(this.requireContext())
-            viewPager.adapter = adapter
-            (context as AppCompatActivity).runOnUiThread {
-                adapter.setData(this.viewModel.responseData.value!!)
-            }
-        })
     }
 }

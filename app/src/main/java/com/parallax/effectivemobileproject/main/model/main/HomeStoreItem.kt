@@ -1,4 +1,4 @@
-package com.parallax.effectivemobileproject.main.model
+package com.parallax.effectivemobileproject.main.model.main
 
 class HomeStoreItem(
     id: Long,

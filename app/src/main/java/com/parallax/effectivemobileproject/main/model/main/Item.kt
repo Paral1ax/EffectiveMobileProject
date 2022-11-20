@@ -1,4 +1,4 @@
-package com.parallax.effectivemobileproject.main.model
+package com.parallax.effectivemobileproject.main.model.main
 
 abstract class Item(
     var id: Long,
