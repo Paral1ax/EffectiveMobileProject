@@ -8,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.ImageLoader
 import coil.request.ImageRequest
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.parallax.effectivemobileproject.R
+import com.parallax.effectivemobileproject.main.itempage.ItemFragment
 import com.parallax.effectivemobileproject.main.model.main.BestSellerItem
 import com.parallax.effectivemobileproject.main.model.main.Item
 
@@ -39,6 +41,11 @@ class BestSellersAdapter(private val activity: Activity): AdapterDelegate<List<I
         val bestSellerItem = items[position] as BestSellerItem
         bindValues(vh, bestSellerItem)
         Log.d("API", "Загрузка фото номер $position во вьюпеджер прошла успешно")
+        vh.itemView.setOnClickListener {
+            val act = it.context as AppCompatActivity
+            val fragment = ItemFragment()
+            act.supportFragmentManager.beginTransaction().replace(R.id.activity_fragment, fragment).addToBackStack(null).commit()
+        }
     }
 
     private fun bindValues(holder: BestSellersViewHolder, item: BestSellerItem) {

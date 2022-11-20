@@ -11,9 +11,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegate
 import com.parallax.effectivemobileproject.R
 import com.parallax.effectivemobileproject.main.MainActivity
+import com.parallax.effectivemobileproject.main.mainpage.adapter.RecyclerViewClickListener
 import com.parallax.effectivemobileproject.main.mainpage.adapter.bestsellers.MainSalesAdapter
+import com.parallax.effectivemobileproject.main.mainpage.adapter.categories.CategoryAdapter
 import com.parallax.effectivemobileproject.main.mainpage.adapter.categories.MainCategoryAdapter
 import com.parallax.effectivemobileproject.main.mainpage.hotsales.viewpager.HotSalesAdapter
 import com.parallax.effectivemobileproject.main.model.main.CategoryItem
