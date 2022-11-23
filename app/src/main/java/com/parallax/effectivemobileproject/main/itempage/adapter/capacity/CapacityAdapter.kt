@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hannesdorfmann.adapterdelegates4.AdapterDelegate
 import com.parallax.effectivemobileproject.R
 
-class CapacityAdapter(private val activity: Activity): AdapterDelegate<List<Any>>() {
+class CapacityAdapter(
+    activity: Activity,
+    private val OnClickCapacityItem: (item: Int) -> Unit
+): AdapterDelegate<List<Any>>() {
 
     private val inflater = activity.layoutInflater
 
@@ -26,11 +29,13 @@ class CapacityAdapter(private val activity: Activity): AdapterDelegate<List<Any>
         holder: RecyclerView.ViewHolder,
         payloads: MutableList<Any>
     ) {
-        val vh = holder as CapacityViewHolder
         val item = items[position] as Int
-        vh.capacity.text = "$item GB"
-        vh.itemView.setOnClickListener {
 
+        with(holder as CapacityViewHolder) {
+            capacity.text = "$item GB"
+            itemView.setOnClickListener {
+                OnClickCapacityItem.invoke(item)
+            }
         }
     }
 

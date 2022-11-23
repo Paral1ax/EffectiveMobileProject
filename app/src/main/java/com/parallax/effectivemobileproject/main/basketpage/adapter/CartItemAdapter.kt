@@ -15,7 +15,9 @@ import com.parallax.effectivemobileproject.main.mainpage.adapter.RecyclerViewCli
 import com.parallax.effectivemobileproject.main.model.cart.CartItem
 import com.parallax.effectivemobileproject.main.model.main.Item
 
-class CartItemAdapter(private val activity: Activity): AdapterDelegate<List<Item>>() {
+class CartItemAdapter(
+    private val activity: Activity
+    ): AdapterDelegate<List<Item>>() {
 
     val inflater = activity.layoutInflater
     private val imageLoader = ImageLoader(activity)

@@ -51,16 +51,16 @@ class MainFragment : Fragment() {
         viewModel.hotSalesData.observe(viewLifecycleOwner) {
             val adapter = HotSalesAdapter(this.requireContext())
             viewPager.adapter = adapter
-            adapter.setData(this.viewModel.hotSalesData.value!!)
+            adapter.setData(it!!)
         }
         viewModel.bestSellersData.observe(viewLifecycleOwner) {
-            val adapter = MainSalesAdapter(this.requireActivity(), this.viewModel.bestSellersData.value!!)
+            val adapter = MainSalesAdapter(this.requireActivity(), it!!)
             bestSellersRecycler.layoutManager = GridLayoutManager(this.requireContext(), 2)
             bestSellersRecycler.adapter = adapter
         }
 
         categoriesData.observe(viewLifecycleOwner) {
-            val adapter = MainCategoryAdapter(this.requireActivity(), categoriesData.value!!)
+            val adapter = MainCategoryAdapter(this.requireActivity(), it!!)
             categoryRecycler.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false)
             categoryRecycler.adapter = adapter
         }

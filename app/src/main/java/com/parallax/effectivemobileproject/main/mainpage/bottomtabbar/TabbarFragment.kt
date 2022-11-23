@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.TextView
 import com.parallax.effectivemobileproject.R
 import com.parallax.effectivemobileproject.main.basketpage.BasketFragment
 
@@ -20,6 +21,7 @@ class TabbarFragment : Fragment() {
     private lateinit var basketButton: ImageButton
     private lateinit var favoritesButton: ImageButton
     private lateinit var userProfileButton: ImageButton
+    private lateinit var cartCounter: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,5 +45,6 @@ class TabbarFragment : Fragment() {
         basketButton = view.findViewById(R.id.basketFragmentButton)
         favoritesButton = view.findViewById(R.id.favoriteFragmentButton)
         userProfileButton = view.findViewById(R.id.userProfileFragmentButton)
+        cartCounter = view.findViewById(R.id.added_to_cart_textview)
     }
 }

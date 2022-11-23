@@ -1,9 +1,7 @@
 package com.parallax.effectivemobileproject.main.model.main
 
-import android.graphics.Color
-
 data class CategoryItem(
-    val vector: Int,
-    val text: String
-) {
-}
+    val drawableRes: Int,
+    val text: String,
+    val isSelected: Boolean = false,
+)

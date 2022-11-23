@@ -69,6 +69,22 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="SpeakableTextPresentCheck" />
 
+        <TextView
+            android:id="@+id/added_to_cart_textview"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/round_oragne_circle"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="@color/white"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/basketFragmentButton"
+            app:layout_constraintHorizontal_bias="0.865"
+            app:layout_constraintStart_toStartOf="@+id/basketFragmentButton"
+            app:layout_constraintTop_toTopOf="@+id/basketFragmentButton" />
+
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/favoriteFragmentButton"
             android:layout_width="60dp"

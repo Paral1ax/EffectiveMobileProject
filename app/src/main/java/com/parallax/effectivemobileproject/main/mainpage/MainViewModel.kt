@@ -66,7 +66,7 @@ class MainViewModel() : ViewModel() {
 
     fun setCategories(): MutableList<CategoryItem> {
         return mutableListOf(
-            CategoryItem(R.drawable.ic_phone_category, "Phones"),
+            CategoryItem(R.drawable.ic_phone_category, "Phones", isSelected = true),
             CategoryItem(R.drawable.ic_computer_category, "Computer"),
             CategoryItem(R.drawable.ic_cardio_category, "Health"),
             CategoryItem(R.drawable.ic_books_category, "Books"),

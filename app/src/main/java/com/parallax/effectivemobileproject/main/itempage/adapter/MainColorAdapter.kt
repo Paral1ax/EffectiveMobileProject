@@ -9,7 +9,13 @@ class MainColorAdapter(private val activity: Activity, private val colors: Mutab
     ListDelegationAdapter<List<Any>>() {
 
         init {
-            delegatesManager.addDelegate(CapacityAdapter(activity))
+            delegatesManager.addDelegate(CapacityAdapter(
+                activity = activity,
+                OnClickCapacityItem = { item -> {
+
+                }
+
+                }))
             delegatesManager.addDelegate(ColorAdapter(activity))
             setItems(colors)
         }
