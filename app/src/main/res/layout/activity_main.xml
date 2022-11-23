@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/activity_fragment"
-        android:name="com.parallax.effectivemobileproject.main.mainpage.bottomtapbar.TapbarFragment"
+        android:name="com.parallax.effectivemobileproject.main.mainpage.bottomtabbar.TabbarFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

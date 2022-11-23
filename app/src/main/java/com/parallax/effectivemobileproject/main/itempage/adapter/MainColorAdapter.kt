@@ -1,8 +1,9 @@
-package com.parallax.effectivemobileproject.main.itempage.adapter.color
+package com.parallax.effectivemobileproject.main.itempage.adapter
 
 import android.app.Activity
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 import com.parallax.effectivemobileproject.main.itempage.adapter.capacity.CapacityAdapter
+import com.parallax.effectivemobileproject.main.itempage.adapter.color.ColorAdapter
 
 class MainColorAdapter(private val activity: Activity, private val colors: MutableList<Any>):
     ListDelegationAdapter<List<Any>>() {

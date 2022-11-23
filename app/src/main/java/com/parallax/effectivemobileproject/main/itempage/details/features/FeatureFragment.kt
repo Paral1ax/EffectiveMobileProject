@@ -1,4 +1,4 @@
-package com.parallax.effectivemobileproject.main.mainpage.bottomtapbar
+package com.parallax.effectivemobileproject.main.itempage.details.features
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -8,24 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import com.parallax.effectivemobileproject.R
 
-class TapbarFragment : Fragment() {
+class FeatureFragment : Fragment() {
 
     companion object {
-        fun newInstance() = TapbarFragment()
+        fun newInstance() = FeatureFragment()
     }
 
-    private lateinit var viewModel: TapbarViewModel
+    private lateinit var viewModel: FeatureViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_tapbar, container, false)
+        return inflater.inflate(R.layout.fragment_feature, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(TapbarViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(FeatureViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

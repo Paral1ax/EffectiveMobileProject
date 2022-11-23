@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.basketpage.BasketFragment"
+    android:background="@color/primary_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/basket_back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/cancel_button_background"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/add_new_geo_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="46dp"
+            android:background="@drawable/orange_button_background"
+            android:src="@drawable/ic_outline_location_on_24_white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/add_geolocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/mark_pro_font_family"
+            android:text="Add address"
+            android:textColor="@color/dark_blue"
+            android:textFontWeight="700"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/add_new_geo_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/my_cart_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/mark_pro_font_family"
+            android:text="My Cart"
+            android:textColor="@color/dark_blue"
+            android:textFontWeight="1000"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/basket_back_button" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="49dp"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_cart_textview">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/dark_blue">
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/user_cart_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="140dp"
+                    android:layout_marginEnd="4dp"
+                    android:alpha="0.25"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/user_cart_recyclerview" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/delivey_cost_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/mark_pro_font_family"
+                    android:text="Free"
+                    android:textColor="@color/white"
+                    android:textFontWeight="1000"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatTextView3"
+                    app:layout_constraintTop_toBottomOf="@+id/total_cost_textview" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/total_cost_textview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="120dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/mark_pro_font_family"
+                    android:gravity="start"
+                    android:text="Add address"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textFontWeight="1000"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.84"
+                    app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/mark_pro_font_family"
+                    android:text="Delivery"
+                    android:textColor="@color/white"
+                    android:textFontWeight="400"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="55dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/mark_pro_font_family"
+                    android:text="Total"
+                    android:textColor="@color/white"
+                    android:textFontWeight="400"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="26dp"
+                    android:layout_marginEnd="4dp"
+                    android:alpha="0.2"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appCompatTextView3" />
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/checkout_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="44dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginEnd="44dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/orange_button_background"
+                    android:fontFamily="@font/mark_pro_font_family"
+                    android:text="Checkout"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textFontWeight="1000"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view5" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

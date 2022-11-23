@@ -2,8 +2,11 @@ package com.parallax.effectivemobileproject.main.mainpage
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +23,8 @@ import com.parallax.effectivemobileproject.main.mainpage.adapter.categories.Cate
 import com.parallax.effectivemobileproject.main.mainpage.adapter.categories.MainCategoryAdapter
 import com.parallax.effectivemobileproject.main.mainpage.hotsales.viewpager.HotSalesAdapter
 import com.parallax.effectivemobileproject.main.model.main.CategoryItem
+import kotlinx.coroutines.NonDisposableHandle.parent
+import kotlin.time.Duration.Companion.milliseconds
 
 class MainFragment : Fragment() {
 
@@ -28,10 +33,8 @@ class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private lateinit var categoriesData: MutableLiveData<MutableList<CategoryItem>>
     private lateinit var categoryRecycler: RecyclerView
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
+    private lateinit var funnel: ImageView
+    lateinit var alertDialog: AlertDialog
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,16 +45,9 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-
-        viewPager = view.findViewById(R.id.hotsales_viewpager)
-        bestSellersRecycler = view.findViewById(R.id.best_sellers_recyclerview)
-        categoryRecycler = view.findViewById(R.id.category_recycler)
-        categoriesData = MutableLiveData()
-
+        bindViews(view)
         viewModel.getHotSales(this.activity as MainActivity)
         categoriesData.value = viewModel.setCategories()
-
         viewModel.hotSalesData.observe(viewLifecycleOwner) {
             val adapter = HotSalesAdapter(this.requireContext())
             viewPager.adapter = adapter
@@ -68,7 +64,24 @@ class MainFragment : Fragment() {
             categoryRecycler.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false)
             categoryRecycler.adapter = adapter
         }
+        funnel.setOnClickListener {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+            builder.setCancelable(true)
+            val addView = LayoutInflater.from(it.context).inflate(R.layout.bottom_filter_menu, null)
+            builder.setView(addView)
+            alertDialog = builder.create()
+            alertDialog.show()
+        }
 
+    }
+
+    private fun bindViews(view: View) {
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewPager = view.findViewById(R.id.hotsales_viewpager)
+        bestSellersRecycler = view.findViewById(R.id.best_sellers_recyclerview)
+        categoryRecycler = view.findViewById(R.id.category_recycler)
+        categoriesData = MutableLiveData()
+        funnel = view.findViewById(R.id.funnel_view)
 
     }
 }

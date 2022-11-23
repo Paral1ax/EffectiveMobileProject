@@ -28,7 +28,7 @@ class CapacityAdapter(private val activity: Activity): AdapterDelegate<List<Any>
     ) {
         val vh = holder as CapacityViewHolder
         val item = items[position] as Int
-        vh.capacity.text = item.toString()
+        vh.capacity.text = "$item GB"
         vh.itemView.setOnClickListener {
 
         }

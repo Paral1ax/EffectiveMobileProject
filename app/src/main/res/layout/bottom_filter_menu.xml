@@ -10,7 +10,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/round_corners">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/imageView"
@@ -94,6 +95,7 @@
             android:background="@drawable/orange_button"
             android:text="Done"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />

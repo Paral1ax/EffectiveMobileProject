@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +20,7 @@ class CategoryAdapter(private val activity: Activity): AdapterDelegate<List<Cate
     private lateinit var previous: View
 
     override fun isForViewType(items: List<CategoryItem>, position: Int): Boolean {
-        return true
+        return items[position] is CategoryItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
@@ -37,6 +38,7 @@ class CategoryAdapter(private val activity: Activity): AdapterDelegate<List<Cate
             vh.categoryView.setBackgroundResource(R.drawable.round_oragne_circle)
         }
         vh.image.setImageResource(items[position].vector)
+        vh.categoryName.text = items[position].text
         vh.itemView.onFocusChangeListener = View.OnFocusChangeListener { v, hasFocus ->
             if (!hasFocus) {
                 val c = v as ConstraintLayout
@@ -65,10 +67,12 @@ class CategoryAdapter(private val activity: Activity): AdapterDelegate<List<Cate
     class CategoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var image: ImageView
         var categoryView: View
+        var categoryName: TextView
 
         init {
             image = itemView.findViewById(R.id.category_image_item)
             categoryView = itemView.findViewById(R.id.category_outer_view)
+            categoryName = itemView.findViewById(R.id.category_name_text)
         }
 
     }

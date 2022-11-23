@@ -1,5 +1,6 @@
 package com.parallax.effectivemobileproject.main.mainpage
 
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -43,6 +44,7 @@ class MainViewModel() : ViewModel() {
                         else {
                             Log.d("API","Происходит обработка ответа и конвертация в json")
                             val stringResponse = response.body?.string()
+
                             val mainJson = JSONObject(stringResponse)
                             val hotSalesJson = mainJson.getJSONArray("home_store")
                             val bestSellersJson = mainJson.getJSONArray("best_seller")
@@ -64,10 +66,10 @@ class MainViewModel() : ViewModel() {
 
     fun setCategories(): MutableList<CategoryItem> {
         return mutableListOf(
-            CategoryItem(R.drawable.ic_phone_category),
-            CategoryItem(R.drawable.ic_computer_category),
-            CategoryItem(R.drawable.ic_cardio_category),
-            CategoryItem(R.drawable.ic_books_category),
+            CategoryItem(R.drawable.ic_phone_category, "Phones"),
+            CategoryItem(R.drawable.ic_computer_category, "Computer"),
+            CategoryItem(R.drawable.ic_cardio_category, "Health"),
+            CategoryItem(R.drawable.ic_books_category, "Books"),
         )
     }
 
